@@ -41,19 +41,15 @@ def fill(arr):
                 arr[i[0]][i[1]] = int(arr[1][i[1]]-(arr[0][i[1]]-arr[1][i[1]]))
     return(arr)
 
-arra = copy.deepcopy(array)
-def findx(arry):
-    x = []
 
+def findx(array):
+    x = []
     for i in range(3):
         for n in range(3):
-            if arry[i][n] == 'X':
+            if array[i][n] == 'X':
                 x.append([i, n])
     return(x)
-
 def ans(array):
-
-
     while (True):
         previous = copy.deepcopy(array)
         array = fill(array)
@@ -75,5 +71,4 @@ while(True):
         randarr = copy.deepcopy(array)
         x = findx(array)
         randarr[x[random.randint(0, len(x)-1)][0]][x[random.randint(0, len(x)-1)][1]] = random.randint(-1000000, 1000000)
-
 
