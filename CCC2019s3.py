@@ -1,5 +1,6 @@
 import random
 import copy
+#this solution uses a random number generator, and does not ac all of the time
 array = []
 for n in range(3):
 
