@@ -1,3 +1,4 @@
+#this solution uses a random number generator, and may not ac all of the time
 import random
 import copy
 array = []
