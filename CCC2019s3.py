@@ -1,6 +1,5 @@
 import random
 import copy
-#this solution uses a random number generator, and does not ac all of the time
 array = []
 for n in range(3):
 
@@ -42,7 +41,6 @@ def fill(arr):
                 arr[i[0]][i[1]] = int(arr[1][i[1]]-(arr[0][i[1]]-arr[1][i[1]]))
     return(arr)
 
-
 def findx(array):
     x = []
     for i in range(3):
@@ -50,6 +48,13 @@ def findx(array):
             if array[i][n] == 'X':
                 x.append([i, n])
     return(x)
+def findnum(array):
+    num = []
+    for i in range(3):
+        for n in range(3):
+            if array[i][n] != 'X':
+                num.append([i, n])
+    return(num)
 def ans(array):
     while (True):
         previous = copy.deepcopy(array)
@@ -63,13 +68,45 @@ def ans(array):
         elif array == previous:
             return(False)
 randarr = copy.deepcopy(array)
-while(True):
+num = findnum(array)
 
-    if ans(randarr):
-        break
-    else:
 
-        randarr = copy.deepcopy(array)
-        x = findx(array)
-        randarr[x[random.randint(0, len(x)-1)][0]][x[random.randint(0, len(x)-1)][1]] = random.randint(-1000000, 1000000)
+if len(num) == 2:
+
+    num1 = array[num[0][0]][num[0][1]]
+    num2 = array[num[1][0]][num[1][1]]
+
+    if num[0][0] != num[1][0]:
+        if num[0][0] == 0 and num[1][0] == 1:
+            array = [[num1]*3, [num2]*3, [num2-(num1-num2)]*3]
+        elif num[0][0] == 1 and num[1][0] == 2:
+            array = [[num1-(num2-num1)] * 3, [num1] * 3, [num2]*3]
+        elif num[0][0] == 0 and num[1][0] == 2:
+            array = [[num1] * 3, [int((num1+num2)/2)] * 3, [num2] * 3]
+    elif num[0][0] == num[1][0]:
+        if num[0][1] == 0 and num[1][1] == 1:
+            array = [[num1, num2, num2-(num1-num2)], [num1, num2, num2-(num1-num2)], [num1, num2, num2-(num1-num2)]]
+        elif num[0][1] == 1 and num[1][1] == 2:
+            array = [[num1-(num2-num1), num1, num2], [num1-(num2-num1), num1, num2], [num1-(num2-num1), num1, num2]]
+        elif num[0][1] == 0 and num[1][1] == 2:
+            array = [[num1, int((num1+num2)/2), num2], [num1, int((num1+num2)/2), num2], [num1, int((num1+num2)/2), num2]]
+    for i in array:
+        print(*i)
+elif len(num) == 1:
+    num1 = array[num[0][0]][num[0][1]]
+    array = [[num1] * 3, [num1] * 3, [num1] * 3]
+    for i in array:
+        print(*i)
+elif len(num) == 0:
+    print("0 0 0")
+    print("0 0 0")
+    print("0 0 0")
+else:
+    while(True):
+        if ans(randarr):
+            break
+        else:
+            randarr = copy.deepcopy(array)
+            x = findx(array)
+            randarr[x[random.randint(0, len(x)-1)][0]][x[random.randint(0, len(x)-1)][1]] = random.randint(-1000000, 1000000)
 
