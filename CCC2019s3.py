@@ -109,5 +109,5 @@ else:
         else:
             randarr = copy.deepcopy(array)
             x = findx(array)
-            randarr[x[random.randint(0, len(x)-1)][0]][x[random.randint(0, len(x)-1)][1]] = random.randint(-1000000, 1000000)
+            randarr[x[random.randint(0, len(x)-1)][0]][x[random.randint(0, len(x)-1)][1]] = random.randint(-100000, 100000)
 
