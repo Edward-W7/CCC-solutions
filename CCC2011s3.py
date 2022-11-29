@@ -12,8 +12,8 @@ def find(mag, x, y):
         else:
             return 'empty'
     else:
-     #   print(mag, x, y)
-       # print(quad(mag, x, y))
+        # print(mag, x, y)
+        # print(quad(mag, x, y))
         if quad(mag, x, y) in [[1, 0], [2, 0], [3, 0], [2, 1]]:
             return 'crystal'
         elif quad(mag, x, y) in [[1, 1], [2, 2], [3, 1]]:
