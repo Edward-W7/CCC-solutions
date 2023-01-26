@@ -1,4 +1,4 @@
-#this solution is correct on the official data, but it might not be fully complete
+#this solution is correct on the official cemc ccc test data, but it does not pass additional tests on dmoj
 import sys
 import math
 import bisect
